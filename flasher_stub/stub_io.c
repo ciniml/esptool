@@ -175,7 +175,7 @@ void stub_tx_one_char(char c)
   if (stub_uses_usb_jtag_serial()){
     // Defer flushing until we have a full packet or a 0xc0 byte to increase throughput.
     transferred_without_flush++;
-    if( (c == '\xc0' || transferred_without_flush == 64) ) {
+    if( c == '\xc0' || transferred_without_flush == 64 ) {
       stub_tx_flush();
       transferred_without_flush = 0;
     }
